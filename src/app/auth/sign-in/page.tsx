@@ -1,10 +1,6 @@
 
-// next 
-import Image from "next/image";
 import Link from "next/link";
-
-// assets 
-import googleLogo from '@/public/assets/google.webp';
+import GoogleLoginBtn from "../components/GoogleLoginBtn";
 
 export default function SignIn() {
     return (
@@ -14,12 +10,8 @@ export default function SignIn() {
                     <h1 className="text-4xl font-semibold">Welcome Back</h1>
                     <p className="text-sm mt-1 text-gray-600">Sign in to your account for saving favorite movies.</p>
                 </div>
-                <div className="w-full flex flex-col gap-2">
-                    <button className="w-full h-12 bg-[#f3f3f3] hover:bg-gray-200 flex items-center justify-center gap-2 rounded-3xl cursor-pointer">
-                        <Image className="w-7 h-7" src={googleLogo} alt="Google icon" />
-                        Sign in with Google
-                    </button>
-                </div>
+
+                <GoogleLoginBtn />
 
                 <div className="flex items-center gap-3">
                     <div className="flex-1 h-px bg-gray-200" />
