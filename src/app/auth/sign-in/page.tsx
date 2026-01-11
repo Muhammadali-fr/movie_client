@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 // assets 
-import githubLogo from '@/public/assets/github.webp';
 import googleLogo from '@/public/assets/google.webp';
 
 export default function SignIn() {
@@ -19,11 +18,6 @@ export default function SignIn() {
                     <button className="w-full h-12 bg-[#f3f3f3] hover:bg-gray-200 flex items-center justify-center gap-2 rounded-3xl cursor-pointer">
                         <Image className="w-7 h-7" src={googleLogo} alt="Google icon" />
                         Sign in with Google
-                    </button>
-
-                    <button className="w-full h-12 bg-[#f3f3f3] hover:bg-gray-200 flex items-center justify-center gap-2 rounded-3xl cursor-pointer">
-                        <Image className="w-7 h-7" src={githubLogo} alt="GitHub icon" />
-                        Sign in with GitHub
                     </button>
                 </div>
 
