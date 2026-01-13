@@ -10,3 +10,14 @@ export function signUp(data: { name: string, email: string }) {
         },
     });
 };
+
+// auth/sign-up 
+export function signIn(data: { email: string }) {
+    return fetcher('/auth/sign-in', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+};

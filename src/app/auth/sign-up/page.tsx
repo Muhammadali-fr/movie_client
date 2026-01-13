@@ -4,8 +4,11 @@ import GoogleLoginBtn from "../components/GoogleLoginBtn";
 import { useForm } from "@tanstack/react-form";
 import { useMutation } from "@tanstack/react-query";
 import { signUp } from "@/src/api/services/auth";
+import { useState } from "react";
+import ButtonLoader from "@/src/components/loaders/ButtonLoader";
 
 export default function SignUp() {
+    const [serverError, setServerError] = useState<string | null>(null);
 
     const signUpMutation = useMutation({
         mutationFn: async (data: { name: string, email: string }) => {
@@ -15,7 +18,10 @@ export default function SignUp() {
             console.log("success message:", message)
         },
         onError: (error) => {
-            console.log("success message:", error)
+            console.log("error message:", error)
+            setServerError(
+                error?.message || "Something went wrong. Please try again."
+            );
         },
     });
 
@@ -82,10 +88,19 @@ export default function SignUp() {
                         )}
                     </form.Field>
 
+                    {serverError && (
+                        <p className="text text-red-600 text-center">
+                            {serverError}
+                        </p>
+                    )}
+
                     <button
-                        className="w-full h-12 border-3xl bg-[#007AFF] hover:bg-[#1A8CFF] disabled:bg-[#A0A0A5] text-white rounded-3xl cursor-pointer mt-2 transition">
-                        Sign Up
+                        disabled={signUpMutation.isPending}
+                        className="w-full h-12 flex items-center justify-center bg-[#007AFF] hover:bg-[#1A8CFF] disabled:bg-[#A0A0A5] text-white rounded-3xl cursor-pointer mt-2 transition"
+                    >
+                        {signUpMutation.isPending ? <ButtonLoader /> : "Sign Up"}
                     </button>
+
                 </form>
 
                 <p className="text-sm text-gray-600 text-center">
