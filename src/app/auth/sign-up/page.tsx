@@ -7,7 +7,7 @@ export default function SignUp() {
             <div className="w-full max-w-95 flex flex-col gap-2">
                 <div>
                     <h1 className="text-4xl font-semibold">Welcome</h1>
-                    <p className="text-sm mt-1 text-gray-600">Create account for saving favorite movies.</p>
+                    <p className="text-sm mt-1 text-gray-600">Create account for saving your favorite movies.</p>
                 </div>
 
                 <GoogleLoginBtn />
