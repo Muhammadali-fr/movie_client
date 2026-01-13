@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { GoogleOAuthProvider } from "@react-oauth/google";
+import TanstackQueryProvider from "../providers/tanstack-query-provider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -28,9 +28,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <GoogleOAuthProvider clientId={process.env.GOOGLE_CLIENT_ID!}>
+        <TanstackQueryProvider>
           {children}
-        </GoogleOAuthProvider>
+        </TanstackQueryProvider>
       </body>
     </html>
   );
