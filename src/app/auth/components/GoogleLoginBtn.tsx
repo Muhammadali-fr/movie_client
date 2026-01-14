@@ -5,24 +5,7 @@ import googleLogo from "@/public/assets/google.webp";
 
 export default function GoogleLoginBtn() {
   function handleLoginwithGoogle() {
-    const width = 500;
-    const height = 500;
-
-    const left = window.screenX + (window.outerWidth - width) / 2;
-    const top = window.screenY + (window.outerHeight - height) / 2;
-
-    const popup = window.open(
-      "http://localhost:8000/auth/google",
-      "google_oauth",
-      `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`
-    );
-
-    if (!popup) {
-      alert("Popup blocked. Please allow popups for this site.");
-      return;
-    }
-
-    popup.focus();
+    window.location.href = "http://localhost:8000/auth/google";
   }
 
   return (

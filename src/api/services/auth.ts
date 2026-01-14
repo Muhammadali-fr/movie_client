@@ -21,3 +21,13 @@ export function signIn(data: { email: string }) {
         },
     });
 };
+
+// auth/sign-up 
+export function getProfile(data: { token: string }) {
+    return fetcher('/auth/profile', {
+        method: 'POST',
+        headers: {
+            Authorization:  `Bearer ${data.token}`
+        },
+    });
+};
