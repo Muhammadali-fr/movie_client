@@ -11,7 +11,7 @@ export function signUp(data: { name: string, email: string }) {
     });
 };
 
-// auth/sign-up 
+// auth/sign-in 
 export function signIn(data: { email: string }) {
     return fetcher('/auth/sign-in', {
         method: 'POST',
@@ -22,12 +22,18 @@ export function signIn(data: { email: string }) {
     });
 };
 
-// auth/sign-up 
+// auth/profile 
 export function getProfile(data: { token: string }) {
     return fetcher('/auth/profile', {
         method: 'POST',
         headers: {
-            Authorization:  `Bearer ${data.token}`
+            Authorization: `Bearer ${data.token}`
         },
     });
+};
+
+
+// auth/verify 
+export function verifyToken(data: { token: string }) {
+    return fetcher(`/auth/verify?token=${data.token}`);
 };
