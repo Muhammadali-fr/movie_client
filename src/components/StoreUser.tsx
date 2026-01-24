@@ -3,13 +3,12 @@
 import { getProfile } from "../api/services/auth";
 // import LogoImage from '@/public/assets/logo.svg';
 import { useQuery } from "@tanstack/react-query";
-import { useUserStore } from "../store/features/user.store";
+import { useUserStore } from "../store/user.store";
 import { useEffect } from "react";
 import { IUser } from "../interfaces/user";
 
 export default function StoreUser() {
-
-    const { user, setUser, loading, setLoading } = useUserStore((state) => state);
+    const { user, setUser } = useUserStore((state) => state);
 
     const { data, isPending, isSuccess } = useQuery({
         queryKey: ['profile'],

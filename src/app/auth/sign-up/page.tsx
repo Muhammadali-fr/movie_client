@@ -9,13 +9,14 @@ import ButtonLoader from "@/src/components/loaders/ButtonLoader";
 
 export default function SignUp() {
     const [serverError, setServerError] = useState<string | null>(null);
+    const [serverSuccess, setServerSuccess] = useState<string | null>(null);
 
     const signUpMutation = useMutation({
         mutationFn: async (data: { name: string, email: string }) => {
-            return await signUp(data);
+            return await signUp(data) as any;
         },
-        onSuccess: (message) => {
-            console.log("success message:", message)
+        onSuccess: (payload: { message: string }) => {
+            setServerSuccess(payload.message || "Link send to your email successfully.");
         },
         onError: (error) => {
             console.log("error message:", error)
@@ -91,6 +92,12 @@ export default function SignUp() {
                     {serverError && (
                         <p className="text text-red-600 text-center">
                             {serverError}
+                        </p>
+                    )}
+
+                    {serverSuccess&& (
+                        <p className="text-sm text-green-600 text-center">
+                            {serverSuccess}
                         </p>
                     )}
 
