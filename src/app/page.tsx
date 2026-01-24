@@ -1,15 +1,7 @@
-"use client";
-
-import { useUserStore } from "../store/user.store";
-
-export default function Home() {
-
-  const {user} = useUserStore((state) => state);
-
-  console.log("User in Home page:", user);
-  
-  
+export default function HomePage(){
   return (
-    <div>{user ? user.name : "No user found"}</div>
+    <main>
+      <h1>Welcome to the Home Page</h1>
+    </main>
   );
 };
