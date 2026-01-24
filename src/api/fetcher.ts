@@ -1,25 +1,29 @@
-export async function fetcher(url: string, options: RequestInit = {}) {
-    const res = await fetch(`http://localhost:8000${url}`, {
+export async function fetcher<T>(url: string, options: RequestInit = {}): Promise<T> {
+    const headers = new Headers(options.headers);
+
+    if (!headers.has("Content-Type") && options.body && !(options.body instanceof FormData)) {
+        headers.set("Content-Type", "application/json");
+    };
+
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}${url}`, {
         ...options,
         credentials: 'include',
-        headers: {
-            'Content-Type': 'application/json',
-            ...options.headers,
-        }
+        headers,
     });
 
     if (!res.ok) {
-        const errorBody = await res.json().catch(() => null);
-        throw new Error(errorBody?.message || `HTTP Error ${res.status}`);
+        const contentType = res.headers.get("content-type") || "";
+        const errorBody =
+            contentType.includes("application/json") ? await res.json().catch(() => null) : await res.text().catch(() => "");
+        const msg = (errorBody as any)?.message || (typeof errorBody === "string" && errorBody) || `HTTP Error ${res.status}`;
+        throw new Error(msg);
     }
 
-    return res.json();
-};
+    if (res.status === 204) return undefined as T;
 
-// get token function 
-export const getToken = () => {
-    if (typeof window !== 'undefined') {
-        return localStorage.getItem('accessToken');
-    }
-    return null;
+    const contentType = res.headers.get("content-type") || "";
+    if (!contentType.includes("application/json")) return (await res.text()) as unknown as T;
+
+    return res.json() as Promise<T>;
 };

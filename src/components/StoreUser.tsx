@@ -1,54 +1,34 @@
 "use client";
-
-// react and next 
-import Image from "next/image";
-import { useState, useEffect } from "react";
-
-// services 
+// import Image from "next/image";
 import { getProfile } from "../api/services/auth";
-
-// redux 
-import { useDispatch } from "react-redux";
-import { setUser } from "../lib/features/userSlice";
-
-// assets 
-import LogoImage from '@/public/assets/logo.svg';
-
-// tanstack query 
+// import LogoImage from '@/public/assets/logo.svg';
 import { useQuery } from "@tanstack/react-query";
+import { useUserStore } from "../store/features/user.store";
+import { useEffect } from "react";
+import { IUser } from "../interfaces/user";
 
 export default function StoreUser() {
-    // redux 
-    const dispatch = useDispatch();
 
-    // states 
-    const [accessToken, setAccessToken] = useState<string | null>(null);
+    const { user, setUser, loading, setLoading } = useUserStore((state) => state);
 
-    // safely read tokens after mount
-    useEffect(() => {
-        if (typeof window !== "undefined") {
-            setAccessToken(localStorage.getItem("accessToken"));
-        }
-    }, []);
-
-    const accessQuery = useQuery({
-        queryKey: ['user', accessToken],
-        queryFn: () => getProfile({ token: accessToken as string }),
-        enabled: !!accessToken,
-        retry: false
+    const { data, isPending, isSuccess } = useQuery({
+        queryKey: ['profile'],
+        queryFn: async () => await getProfile() as { user: IUser },
+        retry: false,
+        enabled: !user,
     });
 
     useEffect(() => {
-        if (accessQuery.data) {
-            dispatch(setUser(accessQuery.data.user));
-        };
-    }, [accessQuery.data, dispatch]);
+        if (isSuccess && data?.user) {
+            setUser(data?.user)
+        }
+    }, [data, isSuccess, setUser]);
 
-    if (accessQuery.isPending && accessToken) {
+    if (isPending) {
         return (
             <div className="fixed inset-0 flex flex-col items-center justify-between bg-white z-50 py-5">
                 <span />
-                <Image src={LogoImage} alt="logo" width={120} height={120} className="rounded-full" />
+                {/* <Image src={LogoImage} alt="logo" width={120} height={120} className="rounded-full" /> */}
                 <p className="text-black">Loading your account...</p>
             </div>
         );
