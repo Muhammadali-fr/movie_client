@@ -4,7 +4,9 @@ import "./globals.css";
 
 // components and providers
 import TanstackQueryProvider from "../providers/tanstack-query-provider";
-import StoreUser from "../components/StoreUser";
+import StoreUser from "../components/store-user/StoreUser";
+import { Suspense } from "react";
+import StoreUserLoader from "../components/store-user/StoreUserLoader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +34,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <TanstackQueryProvider>
-          <StoreUser />
+          <Suspense fallback={<StoreUserLoader />}>
+            <StoreUser />
+          </Suspense>
           {children}
         </TanstackQueryProvider>
       </body>
