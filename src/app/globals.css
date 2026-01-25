@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+@layer components {
+    .c-width {
+        max-width: 1024px;
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .c-white {
+        background-color: #ffffff;
+    }
+
+    .c-blue {
+        background-color: #0071e3;
+    }
+
+    .c-gray {
+        background-color: #f3f3f3;
+    }
+
+    .c-border-color {
+        border-color: #ededed;
+    }
+}
