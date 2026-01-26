@@ -25,3 +25,10 @@ export function getProfile() {
 export function verifyToken(data: { token: string }) {
     return fetcher(`/auth/verify?token=${encodeURI(data.token)}`);
 };
+
+// auth/verify 
+export function logout() {
+    return fetcher(`/auth/logout`, {
+        method: 'POST',
+    });
+};

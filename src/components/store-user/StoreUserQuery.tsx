@@ -13,5 +13,6 @@ export default function StoreUserQuery({ user }: { user: IUser }) {
         };
     }, [user, setUser]);
 
+    console.log("StoreUserQuery rendered with user:", user);
     return null;
 };  
