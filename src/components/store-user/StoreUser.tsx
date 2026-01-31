@@ -10,7 +10,6 @@ export default async function StoreUser() {
         method: 'GET',
         credentials: 'include',
     });
-
     const { user }: { user: IUser } = await data.json();
     return <StoreUserQuery user={user} />;
 };
