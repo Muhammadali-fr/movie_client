@@ -47,7 +47,7 @@ export default function SignUp() {
                         <input
                             name="email"
                             className="w-full h-12 rounded-3xl bg-[#f3f3f3] border-[#f3f3f3] outline-0 px-5 "
-                            type="text"
+                            type="email"
                             placeholder="youname@exemple.com" />
                     </label>
 

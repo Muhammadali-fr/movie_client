@@ -36,6 +36,6 @@ export async function signup(prevState: actionState | undefined, formData: FormD
         return {
             ok: false,
             message: error?.message || "Failed to sign up.",
-        };
+        };  
     }
 };

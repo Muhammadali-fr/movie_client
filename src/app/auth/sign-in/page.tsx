@@ -1,39 +1,18 @@
 "use client"
 import Link from "next/link";
 import GoogleLoginBtn from "../components/GoogleLoginBtn";
-import { useMutation } from "@tanstack/react-query";
-import { signIn } from "@/src/api/services/auth";
-import { useState } from "react";
-import { useForm } from "@tanstack/react-form";
+import { useActionState } from "react";
+import { signin } from "./actions";
 import ButtonLoader from "@/src/components/loaders/ButtonLoader";
 
+const initialState = {
+    ok: false,
+    message: "",
+    fieldErrors: {} as Record<string, string[]>,
+};
+
 export default function SignIn() {
-    const [serverError, setServerError] = useState<string | null>(null);
-    const [serverSuccess, setServerSuccess] = useState<string | null>(null);
-
-    const signInMutation = useMutation({
-        mutationFn: async (data: { email: string }) => {
-            return await signIn(data) as any;
-        },
-        onSuccess: (payload: { message: string }) => {
-            setServerSuccess(payload.message || "Link send to your email successfully.");
-        },
-        onError: (error) => {
-            console.log("error message:", error)
-            setServerError(
-                error?.message || "Something went wrong. Please try again."
-            );
-        },
-    });
-
-    const form = useForm({
-        defaultValues: {
-            email: ""
-        },
-        onSubmit: async ({ value }) => {
-            await signInMutation.mutateAsync(value);
-        },
-    });
+    const [state, formAction, pending] = useActionState(signin, initialState);
 
     return (
         <section className="w-full flex items-center justify-center">
@@ -51,44 +30,34 @@ export default function SignIn() {
                     <div className="flex-1 h-px bg-gray-200" />
                 </div>
 
-                <form onSubmit={
-                    (e) => {
-                        e.preventDefault()
-                        form.handleSubmit()
-                    }
-                } className="flex flex-col gap-2">
-                    <form.Field name="email">
-                        {(field) => (
-                            <label className="w-full">
-                                <p className="text-sm text-gray-600">Email</p>
-                                <input
-                                    value={field.state.value}
-                                    onChange={(e) => field.handleChange(e.target.value)}
-                                    className="w-full h-12 rounded-3xl bg-[#f3f3f3] border-[#f3f3f3] outline-0 px-5 "
-                                    type="email"
-                                    required
-                                    placeholder="youname@exemple.com" />
-                            </label>
-                        )}
-                    </form.Field>
+                <form className="flex flex-col gap-2" action={formAction}>
+                    <label className="w-full">
+                        <p className="text-sm text-gray-600">Email</p>
+                        <input
+                            name="email"
+                            className="w-full h-12 rounded-3xl bg-[#f3f3f3] border-[#f3f3f3] outline-0 px-5 "
+                            type="email"
+                            placeholder="youname@exemple.com" />
+                    </label>
 
-                    {serverError && (
-                        <p className="text text-red-600 text-center">
-                            {serverError}
-                        </p>
-                    )}
+                    {state?.fieldErrors?.email && <div className="text-red-500 text-sm">{state.fieldErrors.email.map((error, id) => <p key={id}>- {error}</p>)}</div>}
 
-                    {serverSuccess && (
-                        <p className="text-sm text-green-600 text-center">
-                            {serverSuccess}
-                        </p>
+                    {state.message && (
+                        <div
+                            className={["text-sm mt-1",
+                                state.ok ? " text-green-700" : " text-red-700",
+                            ].join(" ")}
+                        >
+                            {state.message}
+                        </div>
                     )}
 
                     <button
-                        disabled={signInMutation.isPending}
+                        disabled={pending}
+                        type="submit"
                         className="w-full h-12 flex items-center justify-center bg-[#007AFF] hover:bg-[#1A8CFF] disabled:bg-[#A0A0A5] text-white rounded-3xl cursor-pointer mt-2 transition"
                     >
-                        {signInMutation.isPending ? <ButtonLoader /> : "Sign In"}
+                        {pending ? <ButtonLoader /> : "Sign In"}
                     </button>
                 </form>
 
