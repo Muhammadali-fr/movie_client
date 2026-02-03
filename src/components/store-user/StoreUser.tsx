@@ -5,11 +5,12 @@ import StoreUserQuery from "./StoreUserQuery";
 export default async function StoreUser() {
 
     const cookieHeader = (await cookies()).getAll().map((cookie) => `${cookie.name}=${cookie.value}`).join('; ');
-    const user = await fetch(`http://localhost:8000/auth/profile`, {
+    const data = await fetch(`http://localhost:8000/auth/profile`, {
         headers: { cookie: cookieHeader },
         method: 'GET',
         credentials: 'include',
-    }).then((res) => res.json())
+    });
 
+    const user: IUser = await data.json();
     return <StoreUserQuery user={user} />;
 };
