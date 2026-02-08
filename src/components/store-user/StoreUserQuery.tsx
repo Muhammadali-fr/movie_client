@@ -1,18 +1,21 @@
-"use client"
+"use client";
 
 import { useEffect } from "react";
-import { IUser } from "../../interfaces/user";
+import { useRouter } from "next/navigation";
 import { useUserStore } from "../../store/user.store";
+import type { IUser } from "../../interfaces/user";
 
-export default function StoreUserQuery({ user }: { user: IUser }) {
-    const { setUser } = useUserStore((state: { setUser: (user: IUser) => void }) => state);
+export default function StoreUserQuery({ user }: { user: IUser | null }) {
+  const router = useRouter();
+  const setUser = useUserStore((s) => s.setUser);
 
-    useEffect(() => {
-        if (user) {
-            setUser(user)
-        };
-    }, [user, setUser]);
+  useEffect(() => {
+    if (!user) {
+      router.replace("/auth/sign-in");
+      return;
+    }
+    setUser(user);
+  }, [user, router, setUser]);
 
-    console.log("StoreUserQuery rendered with user:", user);
-    return null;
-};  
+  return null;
+}
