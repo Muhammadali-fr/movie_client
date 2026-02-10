@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useUserStore } from "@/src/store/user.store";
 
 export default function Header() {
-  const user = useUserStore((s) => s.user);
+  const {user} = useUserStore((s) => s); 
+  console.log("user", user)
 
   return (
     <header className="w-full h-12 c-gray">
