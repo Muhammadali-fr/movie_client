@@ -3,5 +3,5 @@ export interface IMovie {
     userId: string;
     title: string;
     moviePoster: string;
-    createdAt: string;
+    createdAt: Date;
 }

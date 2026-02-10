@@ -1,5 +1,6 @@
 import { checkTokens } from "@/src/_lib/check-tokens";
 import { fetcher } from "../fetcher";
+import { IMovie } from "@/src/interfaces/movie";
 
 // movie/upload 
 export async function uploadMovie(data: { title: string, moviePoster: File }) {
@@ -25,7 +26,7 @@ export async function getMovies() {
         return [];
     }
 
-    return fetcher<any[]>('/movie/get', {
+    return fetcher<IMovie[]>('/movie/get', {
         method: 'GET',
         headers: { cookie: cookieHeader }
     });
