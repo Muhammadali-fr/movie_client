@@ -28,6 +28,7 @@ export async function getMovies() {
 
     return fetcher<IMovie[]>('/movie/get', {
         method: 'GET',
-        headers: { cookie: cookieHeader }
+        headers: { cookie: cookieHeader },
+        cache: "force-cache"
     });
 };

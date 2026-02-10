@@ -10,7 +10,7 @@ export default async function StoreUser() {
     const data = await fetch(`http://localhost:8000/auth/profile`, {
         headers: { cookie: cookieHeader },
         method: 'GET',
-        cache: 'no-store'
+        cache: 'force-cache'
     });
 
     if (!data.ok) return <StoreUserQuery user={null} />;
