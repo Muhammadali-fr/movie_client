@@ -1,21 +1,20 @@
-"use client";
-import { logout } from "@/src/api/services/auth";
-import Modal from "@/src/components/Modal";
-import { useUserStore } from "@/src/store/user.store";
-import { useMutation } from "@tanstack/react-query";
-import Image from "next/image";
-import { useState } from "react";
+// import { logout } from "@/src/api/services/auth";
+// import Modal from "@/src/components/Modal";
+// import { useUserStore } from "@/src/store/user.store";
+// import { useMutation } from "@tanstack/react-query";
+// import Image from "next/image";
+// import { useState } from "react";
 import Movies from "./components/Movies";
 
 export default function HomePage() {
-    const [openModal, setOpenModal] = useState(false);
-    const { setUser } = useUserStore(s => s)
-    const logoutQuery = useMutation({
-        mutationFn: async () => await logout(),
-        onSuccess: (data) => {
-            setUser(null)
-        }
-    })
+    // const [openModal, setOpenModal] = useState(false);
+    // const { setUser } = useUserStore(s => s)
+    // const logoutQuery = useMutation({
+    //     mutationFn: async () => await logout(),
+    //     onSuccess: (data) => {
+    //         setUser(null)
+    //     }
+    // })
     return (
         <div className="c-width">
             {/* <Modal open={openModal} onClose={() => setOpenModal(false)} title="Example Modal">

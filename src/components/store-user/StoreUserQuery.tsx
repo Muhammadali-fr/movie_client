@@ -10,12 +10,8 @@ export default function StoreUserQuery({ user }: { user: IUser | null }) {
   const setUser = useUserStore((s) => s.setUser);
 
   useEffect(() => {
-    if (!user) {
-      router.replace("/auth/sign-in");
-      return;
-    }
     setUser(user);
-  }, [user, router, setUser]);
+  }, [user, setUser]);
 
   return null;
 }

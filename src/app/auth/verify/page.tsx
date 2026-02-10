@@ -24,8 +24,6 @@ export default function VerifyPage() {
         },
     });
 
-    console.log("data:", data)
-
     if (isPending) {
 
         return (
@@ -60,7 +58,6 @@ export default function VerifyPage() {
     };
 
     if (error) {
-        console.log(error);
         return (
             <div>error</div>
         );

@@ -27,13 +27,11 @@ export async function uploadMoviePoster(prevState: actionState | undefined, form
 
     try {
         const res = await uploadMovie({ title, moviePoster });
-        console.log("Upload response:", res);
         return {
             ok: true,
             message: "Movie uploaded successfully.",
         };
     } catch (error: any) {
-        console.error("Upload error:", error);
         return {
             ok: false,
             message: error?.message || "Failed to sign in.",

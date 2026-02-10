@@ -1,12 +1,13 @@
-import { useUserStore } from "@/src/store/user.store";
+import { getMovies } from "@/src/api/services/movie";
 import Image from "next/image";
 
-export default function Movies() {
-    const { user } = useUserStore(e => e);
+export default async function Movies() {
+    const movies = await getMovies()
+
     return (
         <div>
             <p className="text-3xl font-semibold">Your Favourite Movies</p>
-            {user?.movies?.map((movie) => (
+            {movies?.map((movie) => (
                 <div key={movie.id}>
                     <div>
                         <Image src={movie.moviePoster} alt={movie.title} width={200} height={300} />
