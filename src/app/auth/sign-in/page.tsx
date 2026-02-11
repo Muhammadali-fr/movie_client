@@ -48,7 +48,7 @@ export default function SignIn() {
                                 state.ok ? " text-green-700" : " text-red-700",
                             ].join(" ")}
                         >
-                            {state.message}
+                           - {state.message}
                         </div>
                     )}
 

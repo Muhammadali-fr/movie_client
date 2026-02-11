@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useUserStore } from "@/src/store/user.store";
+import LogoutButton from "@/src/components/LogoutButton";
 
 export default function Header() {
-  const {user} = useUserStore((s) => s); 
+  const { user } = useUserStore((s) => s);
   console.log("user", user)
 
   return (
@@ -13,7 +14,10 @@ export default function Header() {
         <Link href="/upload">upload</Link>
 
         {user ? (
-          <p className="text-sm">Welcome, {user.name}</p>
+          <div className="flex gap-5 items-center text-sm">
+            <LogoutButton />
+            <p className="text-sm">Welcome, {user.name}</p>
+          </div>
         ) : (
           <Link href="/auth/sign-in">sign-in</Link>
         )}

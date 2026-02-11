@@ -15,6 +15,13 @@ const nextConfig: NextConfig = {
     },
   },
   reactCompiler: true,
+  cacheComponents: true,
+  experimental: {
+    // dynamicIO: true,
+    serverActions: {
+      bodySizeLimit: "10mb"
+    },
+  },
 };
 
 export default nextConfig;
