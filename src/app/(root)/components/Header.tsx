@@ -6,7 +6,6 @@ import LogoutButton from "@/src/components/LogoutButton";
 
 export default function Header() {
   const { user } = useUserStore((s) => s);
-  console.log("user", user)
 
   return (
     <header className="w-full h-12 c-gray">
