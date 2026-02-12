@@ -11,9 +11,6 @@ export default function StoreUserQuery({ user }: { user: IUser | null }) {
 
   useEffect(() => {
     setUser(user);
-    if(!user?.username){
-      router.push("/onboarding/set-username")
-    }
   }, [user, setUser]);
 
   return null;
