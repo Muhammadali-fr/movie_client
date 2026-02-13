@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useUserStore } from "@/src/store/user.store";
 import LogoutButton from "@/src/components/LogoutButton";
-import SetUsernameModal from "@/src/components/SetUsernameModal";
+import SetUsernameModal from "@/src/components/SetUser/SetUsernameModal";
 
 export default function Header() {
   const { user } = useUserStore((s) => s);
