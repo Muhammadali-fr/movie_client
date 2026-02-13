@@ -23,7 +23,7 @@ export default function SetUsernameModal() {
         <p className="text-xl font-semibold">Finish your profile</p>
 
         <label>
-          <p className="text-sm text-gray-500">Upload avatar</p>
+          <p className="text-sm text-gray-500">avatar</p>
           <div className="mx-auto flex items-center justify-center border border-gray-300 w-25 h-25 rounded-full ">
             <Image className="opacity-50" src={PlusCamera} alt="camera" height={50} width={50} />
           </div>
@@ -31,7 +31,7 @@ export default function SetUsernameModal() {
         </label>
 
         <label className="mt-3">
-          <p className="text-sm text-gray-500">Username (lowercase)</p>
+          <p className="text-sm text-gray-500">username</p>
 
           <div className="w-full h-10 border border-gray-300 rounded-4xl px-3 flex items-center gap-2 outline-[#0087fe] focus-within:outline">
             <AtSign size={16} className="text-gray-400" />

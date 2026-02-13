@@ -18,7 +18,7 @@ export default function Header() {
           <div className="flex gap-5 items-center text-sm">
             <LogoutButton />
             <p className="text-sm">Welcome, {user.name}</p>
-            {!user?.username &&
+            {user?.username &&
               <SetUsernameModal />
             }
           </div>
