@@ -48,7 +48,7 @@ export default function SignUp() {
                             name="email"
                             className="w-full h-12 rounded-3xl bg-[#f3f3f3] border-[#f3f3f3] outline-0 px-5 "
                             type="email"
-                            placeholder="youname@exemple.com" />
+                            placeholder="youname@example.com" />
                     </label>
 
                     {state?.fieldErrors?.email && <div className="text-red-500 text-sm">{state.fieldErrors.email.map((error, id) => <p key={id}>- {error}</p>)}</div>}

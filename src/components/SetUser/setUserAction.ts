@@ -37,7 +37,6 @@ export async function SetUserAction(prevState: ActionState = initial, formData: 
 
   const { username: cleanUsername, avatar: cleanAvatar } = parsed.data;
 
-
   try {
     await setUsername({ username: cleanUsername, avatar: cleanAvatar });
     return {
