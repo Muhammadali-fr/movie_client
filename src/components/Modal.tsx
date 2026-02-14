@@ -57,7 +57,7 @@ export default function Modal({ open, onClose, title, children }: ModalProps) {
                 aria-label={title ?? "Modal"}
                 tabIndex={-1}
                 ref={dialogRef}
-                className="relative z-10 w-75 rounded-4xl bg-white/90 p-5 outline-none"
+                className="relative z-10 w-75 rounded-4xl bg-white/93 p-5 outline-none"
             >
                 {children}
             </div>

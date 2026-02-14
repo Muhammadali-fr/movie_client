@@ -64,6 +64,7 @@ export default function SetUsernameModal() {
           </div>
           <input onChange={(e) => setPreview(e.target.files ? URL.createObjectURL(e.target.files[0]) : null)} name="avatar" type="file" className="hidden" />
         </label>
+        {state?.fieldErrors?.avatar && <div className="text-red-500 text-sm">{state.fieldErrors.avatar.map((error, id) => <p key={id}>- {error}</p>)}</div>}
 
         <label className="mt-3 space-y-1">
           <p className={`text-sm ${status.cls}`}>{status.text}</p>
@@ -85,15 +86,26 @@ export default function SetUsernameModal() {
 
             {loading && <Spinner />}
           </div>
-
         </label>
 
+        {state?.fieldErrors?.username && <div className="text-red-500 text-sm">{state.fieldErrors.username.map((error, id) => <p key={id}>- {error}</p>)}</div>}
+
+        {state.message && (
+          <div
+            className={["text-sm mt-1",
+              state.ok ? " text-green-700" : " text-red-700",
+            ].join(" ")}
+          >
+            {state.message}
+          </div>
+        )}
+
         <button
-          disabled={!isAvailable === true}
+          disabled={!isAvailable === true || pending}
           type="submit"
           className="w-full h-10 flex items-center justify-center font-semibold text-lg rounded-4xl bg-[#0087fe] text-white cursor-pointer hover:bg-[#1b90f7] disabled:bg-[#A0A0A5] transition"
         >
-          Save
+          {pending ? <Spinner /> : "Save"}
         </button>
       </form>
     </Modal>
