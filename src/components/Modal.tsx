@@ -41,7 +41,7 @@ export default function Modal({ open, onClose, title, children }: ModalProps) {
     return (
         <div
             aria-hidden={!open}
-            className="fixed inset-0 z-50 flex items-center justify-center"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/5"
         >
             {/* Overlay */}
             <button
@@ -57,7 +57,7 @@ export default function Modal({ open, onClose, title, children }: ModalProps) {
                 aria-label={title ?? "Modal"}
                 tabIndex={-1}
                 ref={dialogRef}
-                className="relative z-10 w-75 rounded-4xl bg-white/88 p-5 outline-none"
+                className="relative z-10 w-75 rounded-4xl bg-white/90 p-5 outline-none"
             >
                 {children}
             </div>

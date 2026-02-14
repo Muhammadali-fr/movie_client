@@ -11,7 +11,7 @@ export async function uploadMovie(data: { title: string, moviePoster: File }) {
     const cookieHeader = await checkTokens();
     if (!cookieHeader) {
         throw new Error('You must be logged in');
-    };
+    };  
 
     return fetcher('/movie/upload', {
         method: 'POST',
