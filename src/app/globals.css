@@ -139,12 +139,18 @@
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-    @apply border-border outline-ring/50;
+    * {
+        @apply border-border outline-ring/50;
+        @apply border-border outline-ring/50;
     }
-  body {
-    @apply bg-background text-foreground;
-    @apply bg-background text-foreground;
+
+    body {
+        @apply bg-background text-foreground;
+        @apply bg-background text-foreground;
     }
+}
+
+
+.btn {
+    @apply flex items-center justify-center gap-2.5 rounded-lg font-medium transition-colors duration-200 disabled:opacity-50 disabled:cursor-default;
 }

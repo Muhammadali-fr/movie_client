@@ -24,13 +24,13 @@ notification.error = (msg = "Xatolik") => {
     toast.error(msg + "!", options);
 };
 
-notification.promise = (
-    action,
-    msg = {
-        loading: "Yuklanmoqda...",
-        success: "Muvaffaqiyatli!",
-        error: "Xatolik!",
-    }
-) => {
-    toast.promise(action, msg, options);
-};
+// notification.promise = (
+//     action,
+//     msg = {
+//         loading: "Yuklanmoqda...",
+//         success: "Muvaffaqiyatli!",
+//         error: "Xatolik!",
+//     }
+// ) => {
+//     toast.promise(action, msg, options);
+// };
