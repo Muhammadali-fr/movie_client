@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+// Toaster 
+import { Toaster } from "react-hot-toast";
+
 // components and providers
 import TanstackQueryProvider from "../providers/tanstack-query-provider";
 import StoreUser from "../components/store-user/StoreUser";
@@ -37,6 +40,7 @@ export default function RootLayout({
           <Suspense fallback={<StoreUserLoader />}>
             <StoreUser />
           </Suspense>
+          <Toaster />
           {children}
         </TanstackQueryProvider>
       </body>
