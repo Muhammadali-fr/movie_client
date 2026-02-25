@@ -1,30 +1,35 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-
-// Toaster 
-import { Toaster } from "react-hot-toast";
-
-// components and providers
-import TanstackQueryProvider from "../providers/tanstack-query-provider";
-import StoreUser from "../components/store-user/StoreUser";
+// react 
 import { Suspense } from "react";
-import StoreUserLoader from "../components/store-user/StoreUserLoader";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// css
+import "@/src/css/index.css";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// metadata 
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Movies",
   description: "Save your favourite movies",
 };
+
+// Fonts 
+import { Inter } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter', 
+})
+
+// Toaster 
+import { Toaster } from "react-hot-toast";
+
+// components
+import StoreUser from "../components/store-user/StoreUser";
+import StoreUserLoader from "../components/store-user/StoreUserLoader";
+
+// Providers
+import TanstackQueryProvider from "../providers/tanstack-query-provider";
 
 export default function RootLayout({
   children,
@@ -34,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.className} antialiased`}
       >
         <TanstackQueryProvider>
           <Suspense fallback={<StoreUserLoader />}>
