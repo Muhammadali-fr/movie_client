@@ -15,11 +15,17 @@ export default function SignUp() {
     const [state, formAction, pending] = useActionState(signup, initialState);
 
     return (
-        <section className="w-full flex items-center justify-center">
-            <div className="w-full max-w-95 flex flex-col gap-2">
+        <section className="flex justify-center gap-3.5 size-full">
+            <div className="max-w-119 w-full my-auto py-5 space-y-3">
+
+                <h1 className="text-2xl">Ro'yxatdan o'tish</h1>
+
                 <div>
-                    <h1 className="text-4xl font-semibold">Welcome</h1>
-                    <p className="text-sm mt-1 text-gray-600">Create account for saving your favorite movies.</p>
+                    <p className="inline-block">Allaqachon akkauntingiz bormi?</p>
+                    <Link href="/auth/sign-in" className="text-primary">
+                        {" "}
+                        Akkauntga kirish
+                    </Link>
                 </div>
 
                 <GoogleLoginBtn />
@@ -35,7 +41,7 @@ export default function SignUp() {
                         <p className="text-sm text-gray-600">Name</p>
                         <input
                             name="name"
-                            className="w-full h-12 rounded-3xl bg-[#f3f3f3] border-[#f3f3f3] outline-0 px-5 "
+                            className="w-full h-12 rounded-lg bg-[#f3f3f3] border-[#f3f3f3] outline-0 px-5 "
                             type="text"
                             placeholder="John Doe" />
                     </label>
@@ -46,7 +52,7 @@ export default function SignUp() {
                         <p className="text-sm text-gray-600">Email</p>
                         <input
                             name="email"
-                            className="w-full h-12 rounded-3xl bg-[#f3f3f3] border-[#f3f3f3] outline-0 px-5 "
+                            className="w-full h-12 rounded-lg bg-[#f3f3f3] border-[#f3f3f3] outline-0 px-5 "
                             type="email"
                             placeholder="youname@example.com" />
                     </label>
@@ -55,7 +61,7 @@ export default function SignUp() {
 
                     {state.message && (
                         <div
-                            className={[ "text-sm mt-1",    
+                            className={["text-sm mt-1",
                                 state.ok ? " text-green-700" : " text-red-700",
                             ].join(" ")}
                         >
@@ -66,18 +72,11 @@ export default function SignUp() {
                     <button
                         disabled={pending}
                         type="submit"
-                        className="w-full h-12 flex items-center justify-center bg-[#007AFF] hover:bg-[#1A8CFF] disabled:bg-[#A0A0A5] text-white rounded-3xl cursor-pointer mt-2 transition"
+                        className="w-full h-12 flex items-center justify-center bg-[#007AFF] hover:bg-[#1A8CFF] disabled:bg-[#A0A0A5] text-white rounded-lg cursor-pointer mt-2 transition"
                     >
-                        {pending ? <ButtonLoader/> : "Sign Up"}
+                        {pending ? <ButtonLoader /> : "Sign Up"}
                     </button>
                 </form>
-
-                <p className="text-sm text-gray-600 text-center">
-                    Have an account?{" "}
-                    <Link href={"/auth/sign-in"} className="text-blue-700 font-medium cursor-pointer hover:underline">
-                        Sign In
-                    </Link>
-                </p>
             </div>
         </section>
     );

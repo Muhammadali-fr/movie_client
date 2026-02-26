@@ -21,7 +21,7 @@ export default function SignIn() {
                     <p className="text-sm mt-1 text-gray-600">Sign in to your account for saving favorite movies.</p>
                 </div> */}
 
-                <h1 className="text-2xl">Akkountga kirish</h1>
+                <h1 className="text-2xl">Akkauntga kirish</h1>
 
                 <div>
                     <p className="inline-block">Hali akkauntingiz yo'qmi?</p>
@@ -69,13 +69,6 @@ export default function SignIn() {
                         {pending ? <ButtonLoader /> : "Sign In"}
                     </button>
                 </form>
-
-                <p className="text-sm text-gray-600">
-                    Don't have an account?{" "}
-                    <Link href={"/auth/sign-up"} className="text-blue-700 font-medium cursor-pointer hover:underline">
-                        Sign Up
-                    </Link>
-                </p>
             </div>
         </section>
     );
