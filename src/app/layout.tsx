@@ -14,11 +14,10 @@ export const metadata: Metadata = {
 
 // Fonts 
 import { Inter } from 'next/font/google';
-
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter', 
+  variable: '--font-inter',
 })
 
 // Toaster 
@@ -29,7 +28,7 @@ import StoreUser from "../components/store-user/StoreUser";
 import StoreUserLoader from "../components/store-user/StoreUserLoader";
 
 // Providers
-import TanstackQueryProvider from "../providers/tanstack-query-provider";
+import Providers from "../providers/provider";
 
 export default function RootLayout({
   children,
@@ -41,13 +40,13 @@ export default function RootLayout({
       <body
         className={`${inter.className} antialiased`}
       >
-        <TanstackQueryProvider>
+        <Providers>
           <Suspense fallback={<StoreUserLoader />}>
             <StoreUser />
           </Suspense>
           <Toaster />
           {children}
-        </TanstackQueryProvider>
+        </Providers>
       </body>
     </html>
   );

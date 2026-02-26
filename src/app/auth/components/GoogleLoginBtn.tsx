@@ -13,10 +13,10 @@ export default function GoogleLoginBtn() {
       <button
         type="button"
         onClick={handleLoginwithGoogle}
-        className="w-full h-12 bg-[#f3f3f3] hover:bg-gray-200 flex items-center justify-center gap-2 rounded-3xl cursor-pointer"
+        className="w-full h-12 bg-[#f3f3f3] hover:bg-gray-200 flex items-center justify-center gap-2 rounded-lg cursor-pointer"
       >
         <Image className="w-7 h-7" src={googleLogo} alt="Google icon" />
-        Sign in with Google
+        Google yordamida kiring
       </button>
     </div>
   );

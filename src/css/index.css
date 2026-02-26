@@ -4,4 +4,33 @@
   html {
     @apply scroll-smooth;
   }
+
+  :root {
+    --radius: 1rem;
+  }
+
+  h1 {
+    @apply font-semibold text-3xl md:text-4xl;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply flex items-center justify-center gap-2.5 rounded-lg font-medium transition-colors duration-200 disabled:opacity-50 disabled:cursor-default;
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply max-w-7xl w-full px-3.5 mx-auto sm:px-4 md:px-5;
+  }
+}
+
+@theme {
+  --color-primary: #0085FF;
+  --color-primary-strong: #1A3EDD;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --color-gray-light: #f5f5f5;
 }

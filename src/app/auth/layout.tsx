@@ -32,7 +32,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
     }, [user, pathname])
 
     return (
-        <div className="flex items-center justify-center fixed inset-0 size-full xs:bg-gray-light py-3.5 xs:py-4 sm:py-5">
+        <div className="flex items-center justify-center fixed inset-0 size-full xs:bg-gray-light py-3.5 xs:py-4 sm:py-5 md:bg-gray-light">
             <div className="container max-h-168 h-full">
                 <div className="grid grid-cols-1 relative h-full rounded-3xl md:grid-cols-2">
                     {/* Image */}
